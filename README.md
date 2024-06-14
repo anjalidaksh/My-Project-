@@ -15,17 +15,40 @@
 
 - ## Questions I Wanted To Answer From the Dataset:
 
-## 1. Which movies and shows on Netflix ranked in the top 10 and bottom 10 based on their IMDB scores?
+## 1. What are the most common genres on Netflix?
 
 - Top 10 Movies
 ```mysql
-SELECT title, 
-type, 
-imdb_score
-FROM shows_movies.titles
-WHERE imdb_score >= 8.0
-AND type = 'MOVIE'
-ORDER BY imdb_score DESC
-LIMIT 10
+SELECT genres, COUNT(*) AS genres_count
+FROM  project_data.titles
+GROUP BY genres
+ORDER BY genres_count DESC
+LIMIT 5;
+
 ```
 Result: 
+
+![Screenshot 2024-06-14 150257](https://github.com/anjalidaksh/My-Project-/assets/167796617/a190550e-77f9-4020-859d-4b2bbf9f0002) 
+
+A list of the top 5 most common genres, along with the count of titles in each genre.
+
+## 2.  What is the distribution of age certifications on Netflix?
+
+-- Top rated movies and shows 
+-- my sql 
+SELECT age_certification, 
+COUNT(*) AS certification_count
+FROM shows_movies.titles
+WHERE type = 'Movie' 
+AND age_certification != 'N/A'
+GROUP BY age_certification
+ORDER BY certification_count DESC
+LIMIT 5;
+Result : 
+
+![Screenshot 2024-06-14 152055](https://github.com/anjalidaksh/My-Project-/assets/167796617/e95d9742-2c52-4ee0-b716-6a85eab5fbed)
+
+Analyzing age certification can provide insights into the distribution of content ratings on Netflix, helping us understand the types of content available for different age groups.
+
+
+
