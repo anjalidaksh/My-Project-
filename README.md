@@ -34,21 +34,43 @@ A list of the top 5 most common genres, along with the count of titles in each g
 
 ## 2.  What is the distribution of age certifications on Netflix?
 
--- Top rated movies and shows 
--- my sql 
-SELECT age_certification, 
-COUNT(*) AS certification_count
-FROM shows_movies.titles
-WHERE type = 'Movie' 
-AND age_certification != 'N/A'
-GROUP BY age_certification
-ORDER BY certification_count DESC
-LIMIT 5;
-Result : 
+- Distribution of age certification
+```mysql
+SELECT age_certification, COUNT(*) as total_titles 
+FROM project_data.titles
+GROUP BY age_certification 
+ORDER BY total_titles DESC;
+
+```
+Result:  
 
 ![Screenshot 2024-06-14 152055](https://github.com/anjalidaksh/My-Project-/assets/167796617/e95d9742-2c52-4ee0-b716-6a85eab5fbed)
 
 Analyzing age certification can provide insights into the distribution of content ratings on Netflix, helping us understand the types of content available for different age groups.
+
+# 3 What are the most common content types (movies, TV shows) on Netflix?
+
+- Common types
+```mysql
+SELECT type, COUNT(*) as total_titles 
+FROM project_data.titles
+GROUP BY type 
+ORDER BY total_titles DESC 
+LIMIT 5;
+
+```
+Result:  
+
+![Screenshot 2024-06-14 171252](https://github.com/anjalidaksh/My-Project-/assets/167796617/832e3189-de12-4e57-817f-889d1e1b71d4) 
+
+A list of the top content types (e.g., movies, TV shows), along with the count of titles in each type.
+
+
+
+
+
+
+
 
 
 
